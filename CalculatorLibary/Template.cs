@@ -37,7 +37,7 @@ namespace BudgetLibrary
         {
             foreach (string name in incomeColumn)
             {
-                Design.Padding(name);
+                Padding(name);
             }
         }
 
@@ -45,7 +45,7 @@ namespace BudgetLibrary
         {
             foreach (string name in expenseColumn)
             {
-                Design.Padding(name);
+                Padding(name);
             }
         }
 
@@ -114,13 +114,13 @@ namespace BudgetLibrary
             columnAmount = (incomeColumn.Count + expenseColumn.Count);
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor hjemme");
-            Design.Padding("Indtast indkomster");
+            Padding("Indtast indkomster");
 
             PrintIncome();
             InputIncome();
             ExtraIncome();
 
-            Design.Padding("Indtast Udgifter");
+            Padding("Indtast Udgifter");
 
             PrintExpenses();
             row = 30;
@@ -246,7 +246,7 @@ namespace BudgetLibrary
                 looping = true;
                 row = 0;
                 Console.SetCursorPosition(row, column);
-                Design.Padding("");
+                Padding("");
                 Console.SetCursorPosition(row + 5, column);
                 string input = Console.ReadLine();
 
@@ -295,7 +295,7 @@ namespace BudgetLibrary
                 looping = true;
                 row = 0;
                 Console.SetCursorPosition(row, column);
-                Design.Padding("");
+                Padding("");
                 Console.SetCursorPosition(row + 5, column);
                 string input = Console.ReadLine();
 
@@ -400,6 +400,11 @@ namespace BudgetLibrary
                     close = false;
                 }
             }
+        }
+
+        public static void Padding(string mystring)
+        {
+            Console.WriteLine("  |  " + mystring.PadRight(22, ' ') + "|");
         }
     }
 }
