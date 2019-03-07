@@ -15,7 +15,6 @@ namespace BudgetLibrary
         public List<int> Expenses = new List<int>();
         int row = 0;
         int column = 0;
-        int columnAmount = 0;
         int incomeNumber = 0;
         int expenseNumber = 0;
 
@@ -75,7 +74,6 @@ namespace BudgetLibrary
             expenseColumn.Clear();
             Income.Clear();
             Expenses.Clear();
-            columnAmount = 0;
         }
 
         public void SaveEditedBudget(List<string> incomeColumn, List<string> expenseColumn, List<int> incomeList, List<int> expensesList)
@@ -97,7 +95,6 @@ namespace BudgetLibrary
             expenseColumn.Clear();
             Income.Clear();
             Expenses.Clear();
-            columnAmount = 0;
         }
 
         public void TemplateSimple()
@@ -111,7 +108,6 @@ namespace BudgetLibrary
             expenseColumn.Add("Husleje: ");
             expenseColumn.Add("Streaming tjenester: ");
             expenseColumn.Add("Opsparing: ");
-            columnAmount = (incomeColumn.Count + expenseColumn.Count);
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor hjemme");
             Padding("Indtast indkomster");
@@ -152,8 +148,6 @@ namespace BudgetLibrary
             expenseColumn.Add("Fitness og sport: ");
             expenseColumn.Add("Streaming tjenester: ");
             expenseColumn.Add("Opsparing: ");
-
-            columnAmount = (incomeColumn.Count + expenseColumn.Count);
 
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor ude");
