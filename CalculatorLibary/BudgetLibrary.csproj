@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Budget.cs" />
+    <Compile Include="Domain\Entry.cs" />
+    <Compile Include="Domain\Expense.cs" />
+    <Compile Include="Domain\Income.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="BudgetRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
