@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BudgetLibrary.Domain
 {
-    class Income : Expense
+    class Income : Entry
     {
         public Income(string name, double quantity) : base(name, quantity)
         {
