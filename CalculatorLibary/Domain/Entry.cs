@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace BudgetLibrary.Domain
 {
-    class Entry
+    public abstract class Entry
     {
+        public string Name;
+        public double Amount;
+
+        public Entry(string name, double amount)
+        {
+            Name = name;
+            Amount = amount;
+        }
     }
 }
