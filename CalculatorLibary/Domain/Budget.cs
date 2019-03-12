@@ -13,10 +13,17 @@ namespace BudgetLibrary.Domain
         private readonly List<Entry> _incomes = new List<Entry>();
         private readonly List<Entry> _expenses = new List<Entry>();
 
+        public int ID;
 
-        public Budget(string name)
+
+        public Budget(string name, int id)
         {
             Name = name;
+            ID = id;
+        }
+        public Budget(string name) : this(name, -1)
+        {
+
         }
 
         public void AddIncome(string name, double amount)
