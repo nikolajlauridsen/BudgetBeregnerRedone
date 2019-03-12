@@ -8,9 +8,10 @@ namespace BudgetLibrary.Domain
 {
     public class Budget
     {
-        public Budget()
+        public string Name;
+        public Budget(string name)
         {
-
+            Name = name;
         }
     }
 }
