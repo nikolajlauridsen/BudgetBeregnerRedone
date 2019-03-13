@@ -26,14 +26,14 @@ namespace BudgetLibrary.Domain
 
         }
 
-        public void AddIncome(string name, double amount)
+        public void AddIncome(string name, double amount, int id)
         {
-            _incomes.Add(new Income(name, amount));
+            _incomes.Add(new Income(name, amount, id));
         }
 
-        public void AddExpense(string name, double amount)
+        public void AddExpense(string name, double amount, int id)
         {
-            _expenses.Add(new Expense(name, amount));
+            _expenses.Add(new Expense(name, amount, id));
         }
 
         public double CalculateDisposableIncome()

@@ -10,11 +10,13 @@ namespace BudgetLibrary.Domain
     {
         public string Name;
         public double Amount;
+        public readonly int ID;
 
-        public Entry(string name, double amount)
+        public Entry(string name, double amount, int id)
         {
             Name = name;
             Amount = amount;
+            ID = id;
         }
     }
 }

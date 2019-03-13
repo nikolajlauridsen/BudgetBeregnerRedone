@@ -8,7 +8,7 @@ namespace BudgetLibrary.Domain
 {
     public class Income : Entry
     {
-        public Income(string name, double quantity) : base(name, quantity)
+        public Income(string name, double quantity, int id) : base(name, quantity, id)
         {
 
         }
