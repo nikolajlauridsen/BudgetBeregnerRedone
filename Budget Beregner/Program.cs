@@ -18,7 +18,10 @@ namespace Budget_Beregner
             Program myProgram = new Program();
             myProgram.Run();
             */
-            Budget myBudget = SQLConnector.Instance.GetBudget(1);
+
+            Budget budget = SQLConnector.Instance.SaveBudget("Test8", null, null);
+
+            Budget myBudget = SQLConnector.Instance.GetBudget(budget.ID);
             Console.WriteLine($"Budget: {myBudget.Name} ID: {myBudget.ID}");
 
             Console.WriteLine("Incomes: ");

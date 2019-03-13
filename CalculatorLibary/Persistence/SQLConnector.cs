@@ -84,9 +84,63 @@ namespace BudgetLibrary.Persistence
            return budget;
        }
 
-       public Budget SaveBudget(string name, List<Entry> incomes, List<Entry> entry)
+       public Budget SaveBudget(string name, List<Entry> incomes, List<Entry> expenses)
        {
-           throw new NotImplementedException();
+           Budget returnBudget = null;
+           using (SqlConnection con = new SqlConnection(_connectionString))
+           {            
+               con.Open();
+               using (SqlCommand cmd = new SqlCommand("InsertBudget",con))
+               {
+                   cmd.CommandType = CommandType.StoredProcedure;
+                   cmd.Parameters.Add(new SqlParameter("Name", name));
+                   SqlDataReader reader = cmd.ExecuteReader();
+                   if (reader.HasRows)
+                   {
+                       reader.Read();
+                       int id = Convert.ToInt32(reader[0]);
+                       returnBudget = new Budget(name, id);
+                   }
+               }
+               con.Close();
+               foreach (Entry income in incomes)
+               {
+                   con.Open();
+                   using (SqlCommand cmd = new SqlCommand("InsertIncome", con))
+                   {
+                       cmd.CommandType = CommandType.StoredProcedure;
+                       cmd.Parameters.Add(new SqlParameter("Name", income.Name));
+                       cmd.Parameters.Add(new SqlParameter("Amount", income.Name));
+                       cmd.Parameters.Add(new SqlParameter("BudgetID", returnBudget.ID));
+                       SqlDataReader reader = cmd.ExecuteReader();
+                       if (reader.HasRows) {
+                           reader.Read();
+                           int id = Convert.ToInt32(reader[0]);
+                           returnBudget.Incomes.Add(new Income(income.Name, income.Amount, id));
+                       }
+                    }
+               }
+
+               con.Close();
+               foreach (Entry expense in expenses) {
+                   con.Open();
+                   using (SqlCommand cmd = new SqlCommand("InsertExpense", con)) {
+                       cmd.CommandType = CommandType.StoredProcedure;
+                       cmd.Parameters.Add(new SqlParameter("Name", expense.Name));
+                       cmd.Parameters.Add(new SqlParameter("Amount", expense.Name));
+                       cmd.Parameters.Add(new SqlParameter("BudgetID", returnBudget.ID));
+                        SqlDataReader reader = cmd.ExecuteReader();
+                       if (reader.HasRows) {
+                           reader.Read();
+                           int id = Convert.ToInt32(reader[0]);
+                           returnBudget.Expenses.Add(new Expense(expense.Name, expense.Amount, id));
+                       }
+                   }
+               }
+
+            }
+
+            return returnBudget;
        }
 
        public Budget SaveBudget(List<string> incomeColumn, List<string> expenseColumn, List<int> incomeList, List<int> expensesList)
