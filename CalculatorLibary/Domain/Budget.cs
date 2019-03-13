@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,8 +11,8 @@ namespace BudgetLibrary.Domain
     {
         public string Name;
 
-        private readonly List<Entry> _incomes = new List<Entry>();
-        private readonly List<Entry> _expenses = new List<Entry>();
+        private readonly List<Income> _incomes = new List<Income>();
+        private readonly List<Expense> _expenses = new List<Expense>();
 
         public int ID;
 
@@ -21,6 +22,9 @@ namespace BudgetLibrary.Domain
             Name = name;
             ID = id;
         }
+
+        public List<Income> Incomes => _incomes;
+        public List<Expense> Expenses => _expenses;
         public Budget(string name) : this(name, -1)
         {
 
