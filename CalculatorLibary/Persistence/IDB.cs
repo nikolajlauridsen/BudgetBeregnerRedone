@@ -16,6 +16,8 @@ namespace BudgetLibrary.Persistence
         Budget SaveBudget(List<string> incomeColumn, List<string> expenseColumn, List<int> incomeList,
             List<int> expensesList);
 
+        List<Budget> GetBudgets();
+
         void DeleteBudget(int id);
     }
 }
