@@ -19,16 +19,26 @@ namespace Budget_Beregner
             myProgram.Run();
             */
 
-            Budget budget = SQLConnector.Instance.SaveBudget("Test8", null, null);
+            /*
+            Budget budgetToSave = new Budget("Hopefully the final test budget");
+            budgetToSave.AddIncome("SU", 10000, -1);
+            budgetToSave.AddIncome("Løn", 20000, -1);
+            budgetToSave.AddExpense("Husleje", 10000, -1);
+            budgetToSave.AddExpense("Benzin", 8000, -1);
 
-            Budget myBudget = SQLConnector.Instance.GetBudget(budget.ID);
-            Console.WriteLine($"Budget: {myBudget.Name} ID: {myBudget.ID}");
+            budgetToSave = SQLConnector.Instance.SaveBudget(budgetToSave.Name, budgetToSave.Incomes, budgetToSave.Expenses);
+            */
 
-            Console.WriteLine("Incomes: ");
+            Budget myBudget = SQLConnector.Instance.GetBudget(10);
+            Console.WriteLine($"Budget: {myBudget.Name}\nID: {myBudget.ID}");
+
+            Console.WriteLine("\nIncomes: ");
             foreach(Income income in myBudget.Incomes) Console.WriteLine($"{income.Name}: {income.Amount}");
 
-            Console.WriteLine("Expenses: ");
+            Console.WriteLine("\nExpenses: ");
             foreach (Expense expense in myBudget.Expenses) Console.WriteLine($"{expense.Name}: {expense.Amount}");
+
+            Console.WriteLine($"\nDisposable income: {myBudget.CalculateDisposableIncome()}");
             Console.ReadKey(true);
         }
 

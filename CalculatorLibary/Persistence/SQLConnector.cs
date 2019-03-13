@@ -84,7 +84,7 @@ namespace BudgetLibrary.Persistence
            return budget;
        }
 
-       public Budget SaveBudget(string name, List<Entry> incomes, List<Entry> expenses)
+       public Budget SaveBudget(string name, List<Income> incomes, List<Expense> expenses)
        {
            Budget returnBudget = null;
            using (SqlConnection con = new SqlConnection(_connectionString))
@@ -110,7 +110,7 @@ namespace BudgetLibrary.Persistence
                    {
                        cmd.CommandType = CommandType.StoredProcedure;
                        cmd.Parameters.Add(new SqlParameter("Name", income.Name));
-                       cmd.Parameters.Add(new SqlParameter("Amount", income.Name));
+                       cmd.Parameters.Add(new SqlParameter("Amount", income.Amount));
                        cmd.Parameters.Add(new SqlParameter("BudgetID", returnBudget.ID));
                        SqlDataReader reader = cmd.ExecuteReader();
                        if (reader.HasRows) {
@@ -119,6 +119,7 @@ namespace BudgetLibrary.Persistence
                            returnBudget.Incomes.Add(new Income(income.Name, income.Amount, id));
                        }
                     }
+                   con.Close();
                }
 
                con.Close();
@@ -127,7 +128,7 @@ namespace BudgetLibrary.Persistence
                    using (SqlCommand cmd = new SqlCommand("InsertExpense", con)) {
                        cmd.CommandType = CommandType.StoredProcedure;
                        cmd.Parameters.Add(new SqlParameter("Name", expense.Name));
-                       cmd.Parameters.Add(new SqlParameter("Amount", expense.Name));
+                       cmd.Parameters.Add(new SqlParameter("Amount", expense.Amount));
                        cmd.Parameters.Add(new SqlParameter("BudgetID", returnBudget.ID));
                         SqlDataReader reader = cmd.ExecuteReader();
                        if (reader.HasRows) {
@@ -136,6 +137,7 @@ namespace BudgetLibrary.Persistence
                            returnBudget.Expenses.Add(new Expense(expense.Name, expense.Amount, id));
                        }
                    }
+                   con.Close();
                }
 
             }
@@ -150,14 +152,13 @@ namespace BudgetLibrary.Persistence
 
        public void DeleteBudget(int id)
        {
-            Budget budget = null;
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("DeleteBudget", con))
+                using (SqlCommand cmd = new SqlCommand("RemoveBudget", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("ID", budget.ID));
+                    cmd.Parameters.Add(new SqlParameter("ID", id));
                     cmd.ExecuteNonQuery();
                 }
 

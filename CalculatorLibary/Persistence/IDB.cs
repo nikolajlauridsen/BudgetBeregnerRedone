@@ -12,7 +12,7 @@ namespace BudgetLibrary.Persistence
         Budget GetBudget(string name);
         Budget GetBudget(int id);
 
-        Budget SaveBudget(string name, List<Entry> incomes, List<Entry> entry);
+        Budget SaveBudget(string name, List<Income> incomes, List<Expense> expenses);
         Budget SaveBudget(List<string> incomeColumn, List<string> expenseColumn, List<int> incomeList,
             List<int> expensesList);
 
