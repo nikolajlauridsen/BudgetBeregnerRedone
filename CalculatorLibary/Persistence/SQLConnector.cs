@@ -24,7 +24,7 @@ namespace BudgetLibrary.Persistence
 
         public Budget GetBudget(string name)
        {
-           throw new NotImplementedException();
+           throw new NotImplementedException(); 
        }
 
        public Budget GetBudget(int id)
@@ -96,7 +96,21 @@ namespace BudgetLibrary.Persistence
 
        public void DeleteBudget(int id)
        {
-           throw new NotImplementedException();
+            Budget budget = null;
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("DeleteBudget", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("ID", budget.ID));
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+            }
+            
+
        }
    }
 }
