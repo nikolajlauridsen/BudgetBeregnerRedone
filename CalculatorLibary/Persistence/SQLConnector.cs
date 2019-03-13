@@ -112,5 +112,83 @@ namespace BudgetLibrary.Persistence
             
 
        }
-   }
+
+        public List<Budget> GetBudgets()
+        {
+
+            List<Budget> budgets = new List<Budget>();
+
+            //Adds budgets to a list
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("GetBudgets", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            budgets.Add(new Budget(reader["Name"].ToString() ,Convert.ToInt32(reader["ID"])));
+               
+                        }
+                    }
+
+                }
+                con.Close();
+
+                //Adds IncomeLines to budget
+                foreach (Budget budget in budgets)
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("GetIncomeLines", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("ID", budget.ID));
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+
+                            while (reader.Read())
+                            {
+
+                                budget.AddIncome(reader["Name"].ToString(), Convert.ToDouble(reader["Amount"]), Convert.ToInt32(reader["ID"]));
+
+                            }
+                        }
+
+                    }
+                    con.Close();
+                }
+
+                //Adds expense lines to budget
+                foreach (Budget budget in budgets)
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("GetExpenseLines", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("ID", budget.ID));
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+
+                            while (reader.Read())
+                            {
+
+                                budget.AddExpense(reader["Name"].ToString(), Convert.ToDouble(reader["Amount"]), Convert.ToInt32(reader["ID"]));
+
+                            }
+                        }
+
+                    }
+                    con.Close();
+                }
+
+            }
+
+            return budgets;
+        }
+    }
 }
