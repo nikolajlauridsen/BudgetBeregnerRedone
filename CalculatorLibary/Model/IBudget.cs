@@ -12,5 +12,9 @@ namespace BudgetLibrary.Model
         int ID { get; }
         List<IEntry> Incomes { get; }
         List<IEntry> Expenses { get; }
+
+        double Income { get; }
+        double Expense { get; }
+        double DisposableIncome { get; }
     }
 }
