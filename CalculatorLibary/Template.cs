@@ -9,14 +9,14 @@ namespace BudgetLibrary
 {
     public class Template
     {
-        public List<string> incomeColumn = new List<string>();
-        public List<string> expenseColumn = new List<string>();
-        public List<int> Income = new List<int>();
-        public List<int> Expenses = new List<int>();
         int row = 0;
         int column = 0;
         int incomeNumber = 0;
         int expenseNumber = 0;
+        public List<string> incomeColumn = new List<string>();
+        public List<string> expenseColumn = new List<string>();
+        public List<int> Income = new List<int>();
+        public List<int> Expenses = new List<int>();
 
 
         public void InvalidInputMessage()
