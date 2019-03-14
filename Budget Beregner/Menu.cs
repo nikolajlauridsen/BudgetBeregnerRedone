@@ -99,6 +99,14 @@ namespace Budget_Beregner
         private void ShowBudgetMenu()
         {
             Console.Clear();
+            Console.WriteLine(@"  ____            _            _     _                                         ");
+            Console.WriteLine(@" |  _ \          | |          | |   | |                                        ");
+            Console.WriteLine(@" | |_) |_   _  __| | __ _  ___| |_  | |__   ___ _ __ ___  __ _ _ __   ___ _ __ ");
+            Console.WriteLine(@" |  _ <| | | |/ _` |/ _` |/ _ \ __| | '_ \ / _ \ '__/ _ \/ _` | '_ \ / _ \ '__|");
+            Console.WriteLine(@" | |_) | |_| | (_| | (_| |  __/ |_  | |_) |  __/ | |  __/ (_| | | | |  __/ |   ");
+            Console.WriteLine(@" |____/ \__,_|\__,_|\__, |\___|\__| |_.__/ \___|_|  \___|\__, |_| |_|\___|_|   ");
+            Console.WriteLine(@"                     __/ |                                __/ |                ");
+            Console.WriteLine(@"                    |___/                                |___/                 ");
             Console.WriteLine("--== Vælg hvilket budget du vil lægge ==--");
             Console.WriteLine();
             Console.WriteLine("1. Lav simpelt budget - Simpelt budget som er målrettet mod den hjemmeboende studerende i alderen 18-25.\n");
@@ -117,6 +125,14 @@ namespace Budget_Beregner
         {
             Console.Clear();
             BudgetRepository budgetRepo = new BudgetRepository();
+            Console.WriteLine(@"  ____            _            _     _                                         ");
+            Console.WriteLine(@" |  _ \          | |          | |   | |                                        ");
+            Console.WriteLine(@" | |_) |_   _  __| | __ _  ___| |_  | |__   ___ _ __ ___  __ _ _ __   ___ _ __ ");
+            Console.WriteLine(@" |  _ <| | | |/ _` |/ _` |/ _ \ __| | '_ \ / _ \ '__/ _ \/ _` | '_ \ / _ \ '__|");
+            Console.WriteLine(@" | |_) | |_| | (_| | (_| |  __/ |_  | |_) |  __/ | |  __/ (_| | | | |  __/ |   ");
+            Console.WriteLine(@" |____/ \__,_|\__,_|\__, |\___|\__| |_.__/ \___|_|  \___|\__, |_| |_|\___|_|   ");
+            Console.WriteLine(@"                     __/ |                                __/ |                ");
+            Console.WriteLine(@"                    |___/                                |___/                 ");
             Console.Write("Skriv navnet på det budget du vil hente: ");
             string path = Console.ReadLine();
             budgetRepo.LoadBudget(path);
