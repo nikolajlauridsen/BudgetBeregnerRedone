@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BudgetLibrary;
+using BudgetLibrary.Application;
+using BudgetLibrary.Model;
 
 namespace Budget_Beregner
 {
@@ -25,7 +27,7 @@ namespace Budget_Beregner
                         running = false;
                         break;
                     case "1":
-                        ShowBudget();
+                        ChooseBudget();
                         break;
                     case "2":
                         BudgetMenu();
@@ -121,10 +123,9 @@ namespace Budget_Beregner
             Console.Write("Indtast dit valg: ");
             return Console.ReadLine();
         }
-        private void ShowBudget()
+        private void ChooseBudget()
         {
             Console.Clear();
-            BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine(@"  ____            _            _     _                                         ");
             Console.WriteLine(@" |  _ \          | |          | |   | |                                        ");
             Console.WriteLine(@" | |_) |_   _  __| | __ _  ___| |_  | |__   ___ _ __ ___  __ _ _ __   ___ _ __ ");
@@ -133,10 +134,47 @@ namespace Budget_Beregner
             Console.WriteLine(@" |____/ \__,_|\__,_|\__, |\___|\__| |_.__/ \___|_|  \___|\__, |_| |_|\___|_|   ");
             Console.WriteLine(@"                     __/ |                                __/ |                ");
             Console.WriteLine(@"                    |___/                                |___/                 ");
-            Console.Write("Skriv navnet på det budget du vil hente: ");
-            string path = Console.ReadLine();
-            budgetRepo.LoadBudget(path);
+
+            Console.WriteLine();
+
+            List<IBudget> budgets = Controller.Instance.GetBudgets();
+
+            for (int i = 0; i<budgets.Count; i++)
+            {
+                Console.WriteLine($"{i+1} {budgets[i].Name}");
+            }
+
+            Console.Write("Vælg budget: ");
+            int selection;
+            if (int.TryParse(Console.ReadLine(), out selection))
+            {
+                PrintBudget(budgets[selection-1]);
+            }
+            else
+            {
+                Console.WriteLine("Please enter a NUMBER");
+            }
             Console.ReadKey();
         }
+
+        private void PrintBudget(IBudget budget)
+        {
+            Console.Clear();
+            Console.WriteLine("Indtægter");
+            foreach (IEntry income in budget.Incomes) {
+                Console.WriteLine($"{income.Name}:\t{income.Amount}");
+            }
+            Console.WriteLine($"Totale indtægter:\t{budget.Income}\n\n");
+
+            Console.WriteLine("Udgifter");
+            foreach (IEntry expense in budget.Expenses) {
+                Console.WriteLine($"{expense.Name}:\t{expense.Amount}");
+            }
+            Console.WriteLine($"Totale udgifter:\t{budget.Expense}\n\n");
+
+            Console.WriteLine($"Rådigheds beløb:\t{budget.DisposableIncome}");
+        }
+
+
     }
 }

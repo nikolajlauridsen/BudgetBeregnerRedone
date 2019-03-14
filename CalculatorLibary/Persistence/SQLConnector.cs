@@ -200,7 +200,7 @@ namespace BudgetLibrary.Persistence
                     using (SqlCommand cmd = new SqlCommand("GetIncomeLines", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("ID", budget.ID));
+                        cmd.Parameters.Add(new SqlParameter("BudgetID", budget.ID));
                         SqlDataReader reader = cmd.ExecuteReader();
                         if (reader.HasRows)
                         {
@@ -224,7 +224,7 @@ namespace BudgetLibrary.Persistence
                     using (SqlCommand cmd = new SqlCommand("GetExpenseLines", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("ID", budget.ID));
+                        cmd.Parameters.Add(new SqlParameter("BudgetID", budget.ID));
                         SqlDataReader reader = cmd.ExecuteReader();
                         if (reader.HasRows)
                         {

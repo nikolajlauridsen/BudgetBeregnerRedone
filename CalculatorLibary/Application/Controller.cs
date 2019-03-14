@@ -12,9 +12,9 @@ namespace BudgetLibrary.Application
 {
     public class Controller
     {
-        private Controller _instance;
+        private static Controller _instance;
 
-        public Controller Instance => _instance ?? (_instance = new Controller());
+        public static Controller Instance => _instance ?? (_instance = new Controller());
 
         private Controller()
         {
