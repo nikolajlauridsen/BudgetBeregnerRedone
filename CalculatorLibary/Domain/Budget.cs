@@ -15,6 +15,10 @@ namespace BudgetLibrary.Domain
 
         public List<IEntry> Incomes => new List<IEntry>(_incomes);
         public List<IEntry> Expenses => new List<IEntry>(_expenses);
+        public double DisposableIncome => CalculateDisposableIncome();
+        public double Income => _incomes.Sum(x => x.Amount);
+        public double Expense => _expenses.Sum(x => x.Amount);
+
 
         private readonly List<Income> _incomes = new List<Income>();
         private readonly List<Expense> _expenses = new List<Expense>();
