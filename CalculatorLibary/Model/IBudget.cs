@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BudgetLibrary.Model
 {
-    interface IBudget
+    public interface IBudget
     {
         string Name { get; }
         int ID { get; }
