@@ -46,6 +46,8 @@
     <Compile Include="Domain\Entry.cs" />
     <Compile Include="Domain\Expense.cs" />
     <Compile Include="Domain\Income.cs" />
+    <Compile Include="Model\IBudget.cs" />
+    <Compile Include="Model\IEntry.cs" />
     <Compile Include="Persistence\IDB.cs" />
     <Compile Include="Persistence\SQLConnector.cs" />
     <Compile Include="Template.cs" />
