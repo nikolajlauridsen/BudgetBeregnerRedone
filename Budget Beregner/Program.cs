@@ -20,11 +20,11 @@ namespace Budget_Beregner
 
 
 
-            Budget budgetToSave = new Budget("Hopefully the final test budget");
-            budgetToSave.AddIncome("SU", 10000, -1);
-            budgetToSave.AddIncome("Løn", 20000, -1);
-            budgetToSave.AddExpense("Husleje", 10000, -1);
-            budgetToSave.AddExpense("Benzin", 8000, -1);
+            //Budget budgetToSave = new Budget("Hopefully the final test budget");
+            //budgetToSave.AddIncome("SU", 10000, -1);
+            //budgetToSave.AddIncome("Løn", 20000, -1);
+            //budgetToSave.AddExpense("Husleje", 10000, -1);
+            //budgetToSave.AddExpense("Benzin", 8000, -1);
 
             //budgetToSave = SQLConnector.Instance.SaveBudget(budgetToSave.Name, budgetToSave.Incomes, budgetToSave.Expenses);
 
@@ -33,7 +33,7 @@ namespace Budget_Beregner
             //Console.WriteLine($"Budget: {myBudget.Name}\nID: {myBudget.ID}");
 
             //Console.WriteLine("\nIncomes: ");
-            //foreach(Income income in myBudget.Incomes) Console.WriteLine($"{income.Name}: {income.Amount}");
+            //foreach (Income income in myBudget.Incomes) Console.WriteLine($"{income.Name}: {income.Amount}");
 
             //Console.WriteLine("\nExpenses: ");
             //foreach (Expense expense in myBudget.Expenses) Console.WriteLine($"{expense.Name}: {expense.Amount}");

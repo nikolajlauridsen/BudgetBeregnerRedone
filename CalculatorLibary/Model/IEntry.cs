@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BudgetLibrary.Model
 {
-    interface IEntry
+    public interface IEntry
     {
+        string Name { get; }
+        double Amount { get; }
+        int ID { get; }
     }
 }

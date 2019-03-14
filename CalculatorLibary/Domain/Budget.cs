@@ -4,18 +4,20 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using BudgetLibrary.Model;
 
 namespace BudgetLibrary.Domain
 {
-    public class Budget
+    public class Budget : IBudget
     {
-        public string Name;
+        public string Name { get; }
+        public int ID { get; }
+
+        public List<IEntry> Incomes => new List<IEntry>(_incomes);
+        public List<IEntry> Expenses => new List<IEntry>(_expenses);
 
         private readonly List<Income> _incomes = new List<Income>();
         private readonly List<Expense> _expenses = new List<Expense>();
-
-        public int ID;
-
 
         public Budget(string name, int id)
         {
@@ -23,8 +25,7 @@ namespace BudgetLibrary.Domain
             ID = id;
         }
 
-        public List<Income> Incomes => _incomes;
-        public List<Expense> Expenses => _expenses;
+
         public Budget(string name) : this(name, -1)
         {
 
