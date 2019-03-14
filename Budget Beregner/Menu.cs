@@ -81,14 +81,14 @@ namespace Budget_Beregner
             Console.WriteLine(@"                    |___/                                |___/                 ");
 
 
-            Console.WriteLine("\n" + "+=======+============================ +");
+            Console.WriteLine("\n" + "+=======+============================+");
             Console.WriteLine("| Punkt | Vælg venligst et menupunkt |");
-            Console.WriteLine("+=======+============================ +");
-            Console.WriteLine("| 1 | Vis budget |");
+            Console.WriteLine("+=======+============================+");
+            Console.WriteLine("|   1   | Vis budget                 |");
             Console.WriteLine("+-------+----------------------------+");
-            Console.WriteLine("| 2 | Lav budget |");
+            Console.WriteLine("|   2   | Lav budget                 |");
             Console.WriteLine("+-------+----------------------------+");
-            Console.WriteLine("| 0 | Exit |");
+            Console.WriteLine("|   0   | Exit                       |");
             Console.WriteLine("+-------+----------------------------+");
 
     //Console.WriteLine("\nVælg venligst en af nedenstående menupunkter:\n");
