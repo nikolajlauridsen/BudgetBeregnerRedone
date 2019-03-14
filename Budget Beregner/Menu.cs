@@ -160,19 +160,45 @@ namespace Budget_Beregner
         private void PrintBudget(IBudget budget)
         {
             Console.Clear();
+            Console.WriteLine(@"  ____            _            _     _                                         ");
+            Console.WriteLine(@" |  _ \          | |          | |   | |                                        ");
+            Console.WriteLine(@" | |_) |_   _  __| | __ _  ___| |_  | |__   ___ _ __ ___  __ _ _ __   ___ _ __ ");
+            Console.WriteLine(@" |  _ <| | | |/ _` |/ _` |/ _ \ __| | '_ \ / _ \ '__/ _ \/ _` | '_ \ / _ \ '__|");
+            Console.WriteLine(@" | |_) | |_| | (_| | (_| |  __/ |_  | |_) |  __/ | |  __/ (_| | | | |  __/ |   ");
+            Console.WriteLine(@" |____/ \__,_|\__,_|\__, |\___|\__| |_.__/ \___|_|  \___|\__, |_| |_|\___|_|   ");
+            Console.WriteLine(@"                     __/ |                                __/ |                ");
+            Console.WriteLine(@"                    |___/                                |___/                 ");
             Console.WriteLine("Indtægter");
-            foreach (IEntry income in budget.Incomes) {
-                Console.WriteLine($"{income.Name}:\t{income.Amount}");
+
+            string totalIncome = "Totale indtægter ";
+            string totalExpense = "Totale udgifter ";
+            string disposableIncome = "Rådigheds beløb ";
+            // Find max lenght
+            int maxLength = 0;
+            foreach (IEntry income in budget.Incomes)
+            {
+                if (income.Name.Length > maxLength) maxLength = income.Name.Length;
             }
-            Console.WriteLine($"Totale indtægter:\t{budget.Income}\n\n");
+            foreach (IEntry expense in budget.Expenses) {
+                if (expense.Name.Length > maxLength) maxLength = expense.Name.Length;
+            }
+            if (totalExpense.Length > maxLength) maxLength = totalExpense.Length;
+            if (totalIncome.Length > maxLength) maxLength = totalIncome.Length;
+            if (disposableIncome.Length > maxLength) maxLength = disposableIncome.Length;
+
+
+            foreach (IEntry income in budget.Incomes) {
+                Console.WriteLine($"{income.Name.PadRight(maxLength)}:\t{income.Amount}");
+            }
+            Console.WriteLine($"{totalIncome.PadRight(maxLength)}:\t{budget.Income}\n\n");
 
             Console.WriteLine("Udgifter");
             foreach (IEntry expense in budget.Expenses) {
-                Console.WriteLine($"{expense.Name}:\t{expense.Amount}");
+                Console.WriteLine($"{expense.Name.PadRight(maxLength)}:\t{expense.Amount}");
             }
-            Console.WriteLine($"Totale udgifter:\t{budget.Expense}\n\n");
+            Console.WriteLine($"{totalExpense.PadRight(maxLength)}:\t{budget.Expense}\n\n");
 
-            Console.WriteLine($"Rådigheds beløb:\t{budget.DisposableIncome}");
+            Console.WriteLine($"{disposableIncome.PadRight(maxLength)}:\t{budget.DisposableIncome}");
         }
 
 
