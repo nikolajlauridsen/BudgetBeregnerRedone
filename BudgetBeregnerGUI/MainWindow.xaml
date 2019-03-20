@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetBeregnerGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Budget Beregner" Height="450" Width="800">
+    <DockPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <Frame Name="PageHolder" NavigationUIVisibility="Hidden">
+                
+            </Frame>
+        </ScrollViewer>
+    </DockPanel>
 </Window>

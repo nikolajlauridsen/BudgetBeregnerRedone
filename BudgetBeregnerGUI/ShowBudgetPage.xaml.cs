@@ -12,18 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BudgetLibrary.Model;
 
 namespace BudgetBeregnerGUI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ShowBudgetPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ShowBudgetPage : Page
     {
-        public MainWindow()
+        public ShowBudgetPage(IBudget budget)
         {
             InitializeComponent();
-            PageHolder.Navigate(new MainPage()); 
+
         }
     }
 }

@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace BudgetBeregnerGUI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CreateBudgetPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreateBudgetPage : Page
     {
-        public MainWindow()
+        public CreateBudgetPage()
         {
             InitializeComponent();
-            PageHolder.Navigate(new MainPage()); 
         }
     }
 }
