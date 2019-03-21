@@ -21,10 +21,22 @@ namespace BudgetBeregnerGUI
     /// </summary>
     public partial class ShowBudgetPage : Page
     {
-        public ShowBudgetPage(IBudget budget)
+
+        public ShowBudgetPage(IBudget budget, RoutedEventHandler handler)
         {
             InitializeComponent();
 
+            BackBtnShowBudget.Click += handler;
+
+            foreach (IEntry expense in budget.Expenses)
+            {
+                ExpenseList.Items.Add(expense);
+            }
+
+            foreach (IEntry income in budget.Incomes)
+            {
+                IncomeList.Items.Add(income);
+            }
         }
 
 

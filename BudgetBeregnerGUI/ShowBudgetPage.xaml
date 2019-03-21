@@ -9,33 +9,47 @@
       Title="ShowBudgetPage" Background="White">
 
     <DockPanel>
-        <StackPanel DockPanel.Dock="Left" >
-            <Label HorizontalAlignment="Center">Indkomst</Label>
-            <ListView Width="250" Height="400" HorizontalAlignment="Left" >
-                <ListView.View>
-                    <GridView>
+        <Button Name="BackBtnShowBudget" DockPanel.Dock="Top" Width="100" Height="25" Margin="20" HorizontalAlignment="Left" >Tilbage</Button>
+        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="20,-30,20,20">
+            <StackPanel HorizontalAlignment="Center">
+                <Label HorizontalAlignment="Center" FontSize="16" >Indkomst</Label>
+                <ListView Width="250" Height="300" Margin="20,0,20,0" HorizontalAlignment="Left" Name="IncomeList" >
+                    <ListView.View>
+                        <GridView>
 
-                        <GridViewColumn Header="Indtægt" Width="125"  DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Beløb"  Width="125" DisplayMemberBinding="{Binding Amount}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </StackPanel>
-        <StackPanel DockPanel.Dock="Left" >
-            <Label HorizontalAlignment="Center">Udgifter</Label>
-            <ListView Width="250" Height="400" HorizontalAlignment="Left" >
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Udgift" Width="125" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Beløb" Width="125" DisplayMemberBinding="{Binding Amount}"/>
-                    </GridView>
-                </ListView.View>
+                            <GridViewColumn Header="Indtægt" Width="125"  DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Beløb"  Width="125" DisplayMemberBinding="{Binding Amount}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <WrapPanel HorizontalAlignment="Center">
+                    <Label>Total indkomst:</Label>
+                    <Label Name="TotalIncome">mangePenge</Label>
+                </WrapPanel>
 
-            </ListView>
-        </StackPanel>
-        <StackPanel>
+            </StackPanel>
+            <StackPanel >
+                <Label HorizontalAlignment="Center" FontSize="16">Udgifter</Label>
+                <ListView Width="250" Height="300" Margin="20,0,20,0" HorizontalAlignment="Left" Name="ExpenseList" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Udgift" Width="125" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Beløb" Width="125" DisplayMemberBinding="{Binding Amount}"/>
+                        </GridView>
+                    </ListView.View>
 
-        </StackPanel>
+                </ListView>
+                <WrapPanel HorizontalAlignment="Center">
+                    <Label >Total udgift:</Label>
+                    <Label Name="TotalExpense">ingenPenge</Label>
+                </WrapPanel>
+
+            </StackPanel>
+        </WrapPanel>
+        <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+            <Label FontSize="16">Rådighedsbeløb:</Label>
+            <Label FontSize="16" Name="DispIncome">Tal</Label>
+        </WrapPanel>
 
 
     </DockPanel>

@@ -39,12 +39,17 @@ namespace BudgetBeregnerGUI
 
         private void ShowBtn_Click(object sender, RoutedEventArgs e)
         {
-            _pageHolder.Navigate(new ShowBudgetPage(budgets[BudgetList.SelectedIndex]));
+            _pageHolder.Navigate(new ShowBudgetPage(budgets[BudgetList.SelectedIndex], ShowSelf));
         }
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
             _pageHolder.Navigate(new CreateBudgetPage());
+        }
+
+        private void ShowSelf(object sender, RoutedEventArgs e)
+        {
+            _pageHolder.Navigate(this);
         }
 
     }
