@@ -14,7 +14,7 @@
             <ListView.View>
                 <GridView>
 
-                    <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Navn" Width="300" DisplayMemberBinding="{Binding Name}"/>
                 </GridView>
             </ListView.View>
         </ListView>

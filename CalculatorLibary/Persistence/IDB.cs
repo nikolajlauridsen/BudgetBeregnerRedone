@@ -7,7 +7,7 @@ using BudgetLibrary.Domain;
 
 namespace BudgetLibrary.Persistence
 {
-    public interface IDB
+    public interface IDB 
     {
         Budget GetBudget(string name);
         Budget GetBudget(int id);

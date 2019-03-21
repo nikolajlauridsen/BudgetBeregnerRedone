@@ -8,7 +8,7 @@
         Title="Budget Beregner" Height="450" Width="800">
     <DockPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-            <Frame Name="PageHolder" NavigationUIVisibility="Hidden">
+            <Frame Name="PageHolder" NavigationUIVisibility="Hidden" Navigated="PageHolder_Navigated">
                 
             </Frame>
         </ScrollViewer>

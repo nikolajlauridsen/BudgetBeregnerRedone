@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BudgetLibrary.Application;
+using BudgetLibrary.Model;
 
 namespace BudgetBeregnerGUI
 {
@@ -20,19 +22,30 @@ namespace BudgetBeregnerGUI
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage()
+        private Frame _pageHolder;
+        private List<IBudget> budgets = new List<IBudget>();
+        public MainPage(Frame pageHolder)
         {
             InitializeComponent();
+            _pageHolder = pageHolder;
+            budgets = Controller.Instance.GetBudgets();
+
+            foreach (IBudget budget in budgets)
+            {
+                BudgetList.Items.Add(budget);
+                
+            }
         }
 
         private void ShowBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            _pageHolder.Navigate(new ShowBudgetPage(budgets[BudgetList.SelectedIndex]));
         }
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            _pageHolder.Navigate(new CreateBudgetPage());
         }
+
     }
 }

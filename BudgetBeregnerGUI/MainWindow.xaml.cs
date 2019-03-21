@@ -23,7 +23,13 @@ namespace BudgetBeregnerGUI
         public MainWindow()
         {
             InitializeComponent();
-            PageHolder.Navigate(new MainPage()); 
+            PageHolder.Navigate(new MainPage(PageHolder));
+            
+        }
+
+        private void PageHolder_Navigated(object sender, NavigationEventArgs e)
+        {
+
         }
     }
 }
