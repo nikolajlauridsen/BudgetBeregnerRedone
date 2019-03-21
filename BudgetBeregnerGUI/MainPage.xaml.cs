@@ -17,9 +17,7 @@ using BudgetLibrary.Model;
 
 namespace BudgetBeregnerGUI
 {
-    /// <summary>
-    /// Interaction logic for MainPage.xaml
-    /// </summary>
+
     public partial class MainPage : Page
     {
         private Frame _pageHolder;

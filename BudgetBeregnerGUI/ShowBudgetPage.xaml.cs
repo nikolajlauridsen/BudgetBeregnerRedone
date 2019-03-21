@@ -37,6 +37,10 @@ namespace BudgetBeregnerGUI
             {
                 IncomeList.Items.Add(income);
             }
+
+            TotalExpense.Content = budget.Expense;
+            TotalIncome.Content = budget.Income;
+            DispIncome.Content = budget.DisposableIncome;
         }
 
 

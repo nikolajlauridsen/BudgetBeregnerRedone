@@ -24,7 +24,7 @@
                 </ListView>
                 <WrapPanel HorizontalAlignment="Center">
                     <Label>Total indkomst:</Label>
-                    <Label Name="TotalIncome">mangePenge</Label>
+                    <Label Name="TotalIncome"></Label>
                 </WrapPanel>
 
             </StackPanel>
@@ -41,14 +41,14 @@
                 </ListView>
                 <WrapPanel HorizontalAlignment="Center">
                     <Label >Total udgift:</Label>
-                    <Label Name="TotalExpense">ingenPenge</Label>
+                    <Label Name="TotalExpense"></Label>
                 </WrapPanel>
 
             </StackPanel>
         </WrapPanel>
         <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center">
             <Label FontSize="16">Rådighedsbeløb:</Label>
-            <Label FontSize="16" Name="DispIncome">Tal</Label>
+            <Label FontSize="16" Name="DispIncome"></Label>
         </WrapPanel>
 
 
