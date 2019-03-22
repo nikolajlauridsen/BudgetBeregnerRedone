@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetBeregnerGUI"
         mc:Ignorable="d"
-        Title="Budget Beregner" Height="500" Width="900">
+        Title="Budget Beregner" Height="540" Width="900">
     <DockPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
             <Frame Name="PageHolder" NavigationUIVisibility="Hidden" Navigated="PageHolder_Navigated">

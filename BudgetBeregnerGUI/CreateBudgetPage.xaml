@@ -17,7 +17,6 @@
                 <ListView Width="250" Height="300" Margin="20,0,20,0" HorizontalAlignment="Left" Name="IncomeList" >
                     <ListView.View>
                         <GridView>
-
                             <GridViewColumn Header="Indtægt" Width="125"  DisplayMemberBinding="{Binding Name}"/>
                             <GridViewColumn Header="Beløb"  Width="125" DisplayMemberBinding="{Binding Amount}"/>
                         </GridView>

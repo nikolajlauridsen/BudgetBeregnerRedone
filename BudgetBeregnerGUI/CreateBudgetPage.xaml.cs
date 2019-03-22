@@ -22,10 +22,10 @@ namespace BudgetBeregnerGUI
     public partial class CreateBudgetPage : Page
     {
 
-        public CreateBudgetPage()
+        public CreateBudgetPage(RoutedEventHandler backHandler)
         {
             InitializeComponent();
-
+            BackBtnShowBudget.Click += backHandler;
         }
 
         private void AddIncome_Click(object sender, RoutedEventArgs e)
@@ -46,8 +46,13 @@ namespace BudgetBeregnerGUI
 
         private class MyItems
         {
-            public string Name;
-            public string Amount;
+            /*
+             * Weird fact of the day.
+             * Attributes MUST be declared with { get; set}
+             * Even though public attributes defaults to having 
+             */
+            public string Name { get; set; }
+            public string Amount { get; set; }
         }
 
 

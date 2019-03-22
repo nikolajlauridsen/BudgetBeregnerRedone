@@ -42,7 +42,7 @@ namespace BudgetBeregnerGUI
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
-            _pageHolder.Navigate(new CreateBudgetPage());
+            _pageHolder.Navigate(new CreateBudgetPage(ShowSelf));
         }
 
         private void ShowSelf(object sender, RoutedEventArgs e)
