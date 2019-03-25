@@ -55,12 +55,12 @@ namespace BudgetBeregnerGUI
 
             foreach (IEntry expense in budget.Expenses)
             {
-                ExpenseList.Items.Add(expense);
+                ExpenseList.Items.Add(new MyItems {Name = expense.Name, Amount = expense.Amount.ToString()});
             }
 
             foreach (IEntry income in budget.Incomes)
             {
-                IncomeList.Items.Add(income);
+                IncomeList.Items.Add(new MyItems {Name = income.Name, Amount = income.Amount.ToString()});
             }
 
             TotalExpense.Content = budget.Expense;
