@@ -26,13 +26,9 @@ namespace BudgetBeregnerGUI
         {
             InitializeComponent();
             _pageHolder = pageHolder;
-            budgets = Controller.Instance.GetBudgets();
 
-            foreach (IBudget budget in budgets)
-            {
-                BudgetList.Items.Add(budget);
-                
-            }
+            RefreshBudgetList();
+            
         }
 
         private void ShowBtn_Click(object sender, RoutedEventArgs e)
@@ -42,12 +38,27 @@ namespace BudgetBeregnerGUI
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
-            _pageHolder.Navigate(new CreateBudgetPage(ShowSelf));
+            _pageHolder.Navigate(new CreateBudgetPage(ShowSelf, UpdateList));
         }
 
         private void ShowSelf(object sender, RoutedEventArgs e)
         {
             _pageHolder.Navigate(this);
+        }
+
+        private void UpdateList(object sender, RoutedEventArgs e)
+        {
+            RefreshBudgetList();
+        }
+
+        private void RefreshBudgetList()
+        {
+            budgets = Controller.Instance.GetBudgets();
+            BudgetList.Items.Clear();
+            foreach (IBudget budget in budgets) {
+                BudgetList.Items.Add(budget);
+
+            }
         }
 
     }

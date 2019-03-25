@@ -22,33 +22,60 @@ namespace BudgetBeregnerGUI
     public partial class CreateBudgetPage : Page
     {
         private string[] _clearables = new[] {"Navn", "Mængde", "Budget navn"};
-        public CreateBudgetPage(RoutedEventHandler backHandler)
+        private string _nameString = "Navn";
+        private string _amountString = "Mængde";
+        private string _budgetString = "Budget navn";
+
+        private RoutedEventHandler _back;
+        private RoutedEventHandler _listUpdater;
+
+        public CreateBudgetPage(RoutedEventHandler backHandler, RoutedEventHandler listUpdater)
         {
             InitializeComponent();
             BackBtnShowBudget.Click += backHandler;
+            _back = backHandler;
+            _listUpdater = listUpdater;
 
             AddIncomeName.GotFocus += ClearTextbox;
+            AddIncomeName.LostFocus += NameLostFocus;
             AddIncomeAmount.GotFocus += ClearTextbox;
+            AddIncomeAmount.LostFocus += AmountLostFocus;
 
             AddExpenseName.GotFocus += ClearTextbox;
+            AddExpenseName.LostFocus += NameLostFocus;
             AddExpenseAmount.GotFocus += ClearTextbox;
+            AddExpenseAmount.LostFocus += AmountLostFocus;
 
             AddBudgetName.GotFocus += ClearTextbox;
+            AddBudgetName.LostFocus += BudgetNameLostFocus;
         }
 
         private void AddIncome_Click(object sender, RoutedEventArgs e)
         {
-            IncomeList.Items.Add(new MyItems {Name = AddIncomeName.Text, Amount = AddIncomeAmount.Text});
+            if (AddIncomeName.Text.Length < 1 || AddIncomeAmount.Text.Length < 1) return;
 
+            IncomeList.Items.Add(new MyItems {Name = AddIncomeName.Text, Amount = AddIncomeAmount.Text});
+            AddIncomeName.Text = _nameString;
+            AddIncomeAmount.Text = _amountString;
         }
 
         private void AddExpense_Click(object sender, RoutedEventArgs e)
         {
+            if (AddExpenseName.Text.Length < 1 || AddExpenseAmount.Text.Length < 1) return;
+
             ExpenseList.Items.Add(new MyItems { Name = AddExpenseName.Text, Amount = AddExpenseAmount.Text });
+            AddExpenseName.Text = _nameString;
+            AddExpenseAmount.Text = _amountString;
         }
 
         private void AddBtnShowBudget_Click(object sender, RoutedEventArgs e)
         {
+            if (IncomeList.Items.Count < 1 && ExpenseList.Items.Count < 1)
+            {
+                MessageBox.Show("Tilføj venligst indtægter og udgifter inden du gemmer budgettet.");
+                return;
+            }
+
             List<KeyValuePair<string, double>> incomes = new List<KeyValuePair<string, double>>();
             List<KeyValuePair<string, double>> expenses = new List<KeyValuePair<string, double>>();
 
@@ -64,6 +91,8 @@ namespace BudgetBeregnerGUI
             }
 
             Controller.Instance.SaveBudget(AddBudgetName.Text, incomes, expenses);
+            _listUpdater(this, null);
+            _back(this, null);
         }
 
         private void ClearTextbox(object sender, EventArgs e)
@@ -74,6 +103,29 @@ namespace BudgetBeregnerGUI
                 {
                     box.Text = "";
                 }
+            }
+        }
+
+        private void NameLostFocus(object sender, EventArgs e)
+        {
+            if (sender is TextBox box)
+            {
+                if (box.Text.Length < 1) box.Text = _nameString;
+            }
+        }
+
+        private void AmountLostFocus(object sender, EventArgs e)
+        {
+            if (sender is TextBox box) {
+                if (box.Text.Length < 1) box.Text = _amountString;
+            }
+        }
+
+        private void BudgetNameLostFocus(object sender, EventArgs e)
+        {
+            if (sender is TextBox box)
+            {
+                if (box.Text.Length < 1) box.Text = _budgetString;
             }
         }
 
