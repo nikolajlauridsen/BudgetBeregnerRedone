@@ -53,5 +53,13 @@ namespace BudgetLibrary.Application
 
             SQLConnector.Instance.SaveBudget(name, _incomes, _expenses);
         }
+
+        public void EditBudget(int id, string name, List<KeyValuePair<string, double>> incomes, List<KeyValuePair<string, double>> expenses)
+        {
+            DeleteBudget(id);
+
+            SaveBudget(name, incomes, expenses);
+        }
+
     }
 }

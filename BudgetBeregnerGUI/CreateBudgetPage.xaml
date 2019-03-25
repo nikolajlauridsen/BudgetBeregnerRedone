@@ -27,12 +27,14 @@
                     <TextBox Name="AddIncomeAmount" Margin="2,2,2,2" Width="80">Mængde</TextBox>
                     <Button Name="AddIncome" Margin="2,2,2,2" Width="80" Click="AddIncome_Click">Tilføj</Button>
                 </WrapPanel>
+                <Button Name="RemoveIncome" Width="250" Click="RemoveIncome_Click">Fjern indtægt</Button>
                 <WrapPanel HorizontalAlignment="Center">
                     <Label>Total indkomst:</Label>
                     <Label Name="TotalIncome"></Label>
                 </WrapPanel>
 
             </StackPanel>
+
             <StackPanel >
                 <Label HorizontalAlignment="Center" FontSize="16">Udgifter</Label>
                 <ListView Width="250" Height="300" Margin="20,0,20,0" HorizontalAlignment="Left" Name="ExpenseList" >
@@ -47,7 +49,9 @@
                     <TextBox Name="AddExpenseName" Margin="2,2,2,2" Width="80">Navn</TextBox>
                     <TextBox Name="AddExpenseAmount" Margin="2,2,2,2" Width="80">Mængde</TextBox>
                     <Button Name="AddExpense" Margin="2,2,2,2" Width="80" Click="AddExpense_Click">Tilføj</Button>
+                    
                 </WrapPanel>
+                <Button Name="RemoveExpense" Width="250" Click="RemoveExpense_Click">Fjern udgift</Button>
                 <WrapPanel HorizontalAlignment="Center">
                     <Label >Total udgift:</Label>
                     <Label Name="TotalExpense"></Label>
@@ -60,8 +64,8 @@
             <Label FontSize="16">Rådighedsbeløb:</Label>
             <Label FontSize="16" Name="DispIncome"></Label>
         </WrapPanel>
-        <WrapPanel DockPanel.Dock="Bottom" Margin="20,45,20,20" HorizontalAlignment="Right">
-            <TextBox Margin="0,0,10,0" Name="AddBudgetName" Width="150"  >Budget navn</TextBox>
+        <WrapPanel DockPanel.Dock="Bottom" Margin="20,25,20,20" HorizontalAlignment="Right">
+            <TextBox Margin="0,0,5,0" Name="AddBudgetName" Width="150"  >Budget navn</TextBox>
             <Button Name="AddBtnShowBudget" Width="100" Height="25" Click="AddBtnShowBudget_Click" >Tilføj</Button>
         </WrapPanel>
     </DockPanel>

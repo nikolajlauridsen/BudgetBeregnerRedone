@@ -141,6 +141,15 @@ namespace BudgetBeregnerGUI
         }
 
 
+        private void RemoveIncome_Click(object sender, RoutedEventArgs e)
+        {
+            IncomeList.Items.Remove(IncomeList.SelectedItem);
+        }
+
+        private void RemoveExpense_Click(object sender, RoutedEventArgs e)
+        {
+            ExpenseList.Items.Remove(ExpenseList.SelectedItem);
+        }
     }
 
 
