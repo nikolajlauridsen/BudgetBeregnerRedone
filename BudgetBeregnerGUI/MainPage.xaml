@@ -10,7 +10,7 @@
 
     <DockPanel VerticalAlignment="Top" Margin="20,20,20,20" >
         <Label DockPanel.Dock="Top" FontSize="20" >Budgetter</Label>       
-        <ListView DockPanel.Dock="Left" Width="305" Height="300" Name="BudgetList" >
+        <ListView DockPanel.Dock="Left" Width="300" Height="300" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Name="BudgetList" >
             <ListView.View>
                 <GridView>
 
