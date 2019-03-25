@@ -45,11 +45,14 @@
 
             </StackPanel>
         </WrapPanel>
-        <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
             <Label FontSize="16">Rådighedsbeløb:</Label>
             <Label FontSize="16" Name="DispIncome"></Label>
         </WrapPanel>
-
+        
+        <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="20,15,20,0">
+            <Button Name="ExportBtn" Width="100" Height="25">Exporter til excel</Button>
+        </WrapPanel>
 
     </DockPanel>
 </Page>

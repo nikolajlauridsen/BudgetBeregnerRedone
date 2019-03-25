@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BudgetLibrary.Application;
 using BudgetLibrary.Model;
+using Microsoft.Win32;
 
 namespace BudgetBeregnerGUI
 {
@@ -22,11 +24,16 @@ namespace BudgetBeregnerGUI
     public partial class ShowBudgetPage : Page
     {
 
+        private IBudget _targetBudget;
+
         public ShowBudgetPage(IBudget budget, RoutedEventHandler handler)
         {
             InitializeComponent();
 
+            _targetBudget = budget;
+
             BackBtnShowBudget.Click += handler;
+            ExportBtn.Click += ExportBudget;
 
             foreach (IEntry expense in budget.Expenses)
             {
@@ -41,6 +48,18 @@ namespace BudgetBeregnerGUI
             TotalExpense.Content = budget.Expense;
             TotalIncome.Content = budget.Income;
             DispIncome.Content = budget.DisposableIncome;
+        }
+
+
+        private void ExportBudget(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "CSV file (*.csv)|.csv";
+            dialog.ValidateNames = true;
+            if (dialog.ShowDialog() == true)
+            {
+                BudgetExporter.ExportBudget(_targetBudget, dialog.FileName);
+            }
         }
 
 
