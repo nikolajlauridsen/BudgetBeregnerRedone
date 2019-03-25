@@ -125,5 +125,10 @@
       <Name>BudgetLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="splashTest.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </SplashScreen>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
