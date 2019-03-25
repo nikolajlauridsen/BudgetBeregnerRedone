@@ -49,7 +49,21 @@ namespace BudgetBeregnerGUI
 
         private void AddBtnShowBudget_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            List<KeyValuePair<string, double>> incomes = new List<KeyValuePair<string, double>>();
+            List<KeyValuePair<string, double>> expenses = new List<KeyValuePair<string, double>>();
+
+            foreach (MyItems item in IncomeList.Items)
+            {
+                double val = Double.Parse(item.Amount);
+                incomes.Add(new KeyValuePair<string, double>(item.Name, val));
+            }
+
+            foreach (MyItems item in ExpenseList.Items) {
+                double val = Double.Parse(item.Amount);
+                expenses.Add(new KeyValuePair<string, double>(item.Name, val));
+            }
+
+            Controller.Instance.SaveBudget(AddBudgetName.Text, incomes, expenses);
         }
 
         private void ClearTextbox(object sender, EventArgs e)
