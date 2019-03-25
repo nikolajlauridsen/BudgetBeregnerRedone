@@ -14,7 +14,7 @@
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="20,-40,20,0">
             <StackPanel HorizontalAlignment="Center">
                 <Label HorizontalAlignment="Center" FontSize="16" >Indkomst</Label>
-                <ListView Width="250" Height="300" Margin="20,0,20,0" HorizontalAlignment="Left" Name="IncomeList" >
+                <ListView Width="250" Height="300" Margin="20,0,20,0" HorizontalAlignment="Left" Name="IncomeList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Indtægt" Width="125"  DisplayMemberBinding="{Binding Name}"/>
@@ -37,7 +37,7 @@
 
             <StackPanel >
                 <Label HorizontalAlignment="Center" FontSize="16">Udgifter</Label>
-                <ListView Width="250" Height="300" Margin="20,0,20,0" HorizontalAlignment="Left" Name="ExpenseList" >
+                <ListView Width="250" Height="300" Margin="20,0,20,0" HorizontalAlignment="Left" Name="ExpenseList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Udgift" Width="125" DisplayMemberBinding="{Binding Name}"/>
