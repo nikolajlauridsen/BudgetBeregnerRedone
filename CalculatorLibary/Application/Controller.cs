@@ -31,6 +31,11 @@ namespace BudgetLibrary.Application
             return new List<IBudget>(SQLConnector.Instance.GetBudgets());
         }
 
+        public void DeleteBudget(int id)
+        {
+            SQLConnector.Instance.DeleteBudget(id);
+        }
+
         public void SaveBudget(string name, List<KeyValuePair<string, double>> incomes, List<KeyValuePair<string, double>> expenses)
         {
             List<Income> _incomes = new List<Income>();

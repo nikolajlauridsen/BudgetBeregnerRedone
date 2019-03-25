@@ -23,6 +23,7 @@
             <Button Name="ShowBtn" Width="75" Height="25" HorizontalAlignment="Left" Margin="0,0,0,10" Click="ShowBtn_Click" >Vis</Button>
             <Button Name="CreateBtn" Width="75" Height="25" HorizontalAlignment="Left" Margin="0,0,0,10" Click="CreateBtn_Click">Opret</Button>
             <Button Name="EditBtn" Width="75" Height="25" HorizontalAlignment="Left" IsEnabled="False" Margin="0,0,0,10">Rediger</Button>
+            <Button Name="DeleteBtn" Width="75" Height="25" HorizontalAlignment="Left" Margin="0,0,0,10" Click="DeleteBtn_Click">Slet</Button>
         </StackPanel>
 
         

@@ -46,6 +46,21 @@ namespace BudgetBeregnerGUI
             _pageHolder.Navigate(this);
         }
 
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (BudgetList.SelectedItem is IBudget selectedBudget)
+            {
+                if (MessageBox.Show(
+                        $"Er du sikker på at du vil slette {selectedBudget.Name}, dette er en endelig handling og kan ikke ændres",
+                        "Sikker?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    Controller.Instance.DeleteBudget(selectedBudget.ID);
+                    RefreshBudgetList();
+                }
+            }
+            
+        }
+
         private void UpdateList(object sender, RoutedEventArgs e)
         {
             RefreshBudgetList();
