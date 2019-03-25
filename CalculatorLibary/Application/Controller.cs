@@ -30,5 +30,23 @@ namespace BudgetLibrary.Application
         {
             return new List<IBudget>(SQLConnector.Instance.GetBudgets());
         }
+
+        public void SaveBudget(string name, List<KeyValuePair<string, double>> incomes, List<KeyValuePair<string, double>> expenses)
+        {
+            List<Income> _incomes = new List<Income>();
+            List<Expense> _expenses = new List<Expense>();
+
+            foreach (KeyValuePair<string, double> income in incomes)
+            {
+                _incomes.Add(new Income(income.Key, income.Value, -1));
+            }
+
+            foreach (KeyValuePair<string, double> expense in expenses)
+            {
+                _expenses.Add(new Expense(expense.Key, expense.Value, -1));
+            }
+
+            SQLConnector.Instance.SaveBudget(name, _incomes, _expenses);
+        }
     }
 }
