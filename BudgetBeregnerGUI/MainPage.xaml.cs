@@ -76,5 +76,12 @@ namespace BudgetBeregnerGUI
             }
         }
 
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (BudgetList.SelectedItem is IBudget budget)
+            {
+                _pageHolder.Navigate(new EditBudgetPage(budget, ShowSelf, UpdateList));
+            }
+        }
     }
 }
