@@ -52,6 +52,7 @@ namespace BudgetBeregnerGUI
 
             AddBudgetName.GotFocus += ClearTextbox;
             AddBudgetName.LostFocus += BudgetNameLostFocus;
+            AddBudgetName.Text = budget.Name;
 
             foreach (IEntry expense in budget.Expenses)
             {
