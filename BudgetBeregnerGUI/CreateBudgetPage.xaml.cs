@@ -21,11 +21,19 @@ namespace BudgetBeregnerGUI
     /// </summary>
     public partial class CreateBudgetPage : Page
     {
-
+        private string[] _clearables = new[] {"Navn", "Mængde", "Budget navn"};
         public CreateBudgetPage(RoutedEventHandler backHandler)
         {
             InitializeComponent();
             BackBtnShowBudget.Click += backHandler;
+
+            AddIncomeName.GotFocus += ClearTextbox;
+            AddIncomeAmount.GotFocus += ClearTextbox;
+
+            AddExpenseName.GotFocus += ClearTextbox;
+            AddExpenseAmount.GotFocus += ClearTextbox;
+
+            AddBudgetName.GotFocus += ClearTextbox;
         }
 
         private void AddIncome_Click(object sender, RoutedEventArgs e)
@@ -42,6 +50,17 @@ namespace BudgetBeregnerGUI
         private void AddBtnShowBudget_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void ClearTextbox(object sender, EventArgs e)
+        {
+            if (sender is TextBox box)
+            {
+                if (_clearables.Contains(box.Text))
+                {
+                    box.Text = "";
+                }
+            }
         }
 
         private class MyItems
