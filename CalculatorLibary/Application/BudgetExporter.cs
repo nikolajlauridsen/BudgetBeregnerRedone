@@ -18,14 +18,12 @@ namespace BudgetLibrary.Application
 
             // Add incomes
             table[1, 3] = "Indtægter";
-            for (int i = 0; i < budget.Expenses.Count; i++)
+            for (int i = 0; i < budget.Incomes.Count; i++)
             {
                 table[1, 4 + i] = budget.Incomes[i].Name;
                 table[2, 4 + i] = budget.Incomes[i].Amount;
             }
-            // Total income
-            table[1, table.Dimensions[1] + 2] = "Totale indtægter";
-            table[2, table.Dimensions[1]] = budget.Income;
+           
 
             // Add expenses
             table[4, 3] = "Udgifter";
@@ -33,6 +31,11 @@ namespace BudgetLibrary.Application
                 table[4, 4 + i] = budget.Expenses[i].Name;
                 table[5, 4 + i] = budget.Expenses[i].Amount;
             }
+
+            // Total income
+            table[1, table.Dimensions[1] + 2] = "Totale indtægter";
+            table[2, table.Dimensions[1]] = budget.Income;
+
             // Total expense
             table[4, table.Dimensions[1]] = "Totale udgifter";
             table[5, table.Dimensions[1]] = budget.Expense;
